@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PROJECT TYPHOON - Инновационный проект будущего">
+    <title>PROJECT TYPHOON</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+        <div class="scan-line"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">TYPHOON</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <button class="menu-toggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#session-manager" class="nav-link active">Session Manager</a></li>
+                <li><a href="#about" class="nav-link">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ================= SESSION MANAGER (DEMO) ================= -->
+        <section id="session-manager" class="section session-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-number">01.</span>
+                    <span>Typhoon Prodject Снос Telegram аккаунта!</span>         
+                </h2>
+                <p class="section-subtitle">Демонстрационный интерфейс управления сессиями</p>
+
+                <div class="session-card">
+                    <div class="session-card-header">
+                        <span class="card-dot"></span>
+                        <h3>Идентификация сессии</h3>
+                        <span class="header-badge">ПОДПИСКА КУПЛЕНА</span>
+                    </div>
+
+                    <div class="identifier-toggle" id="identifier-toggle">
+                        <button class="toggle-btn active" data-type="phone" type="button">PHONE NUMBER</button>
+                        <button class="toggle-btn" data-type="username" type="button">USERNAME</button>
+                        <span class="toggle-slider" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="input-group" id="phone-group">
+                        <div class="input-wrapper">
+                            <span class="input-prefix">+7</span>
+                            <input type="tel" id="phone-input" class="session-input" placeholder="XX XXX XX XX" inputmode="numeric" autocomplete="off">
+                        </div>
+                        <p class="input-hint">Формат: +7 XX XXX XX XX</p>
+                    </div>
+
+                    <div class="input-group hidden" id="username-group">
+                        <div class="input-wrapper">
+                            <span class="input-prefix">@</span>
+                            <input type="text" id="username-input" class="session-input" placeholder="username" autocomplete="off" spellcheck="false">
+                        </div>
+                        <p class="input-hint">Формат: @username</p>
+                    </div>
+
+                    <button class="btn btn-primary btn-search" id="search-btn" type="button">
+                        <span class="btn-text">Найти сессию</span>
+                        <span class="btn-icon">⌕</span>
+                    </button>
+
+                    <div class="session-result hidden" id="session-result">
+                        <div class="result-header">
+                            <span class="result-badge">TARGET SESSION</span>
+                            <span class="result-id">#TYPH-0917</span>
+                        </div>
+                        <ul class="session-info">
+                            <li class="info-row">
+                                <span class="info-label">Username</span>
+                                <span class="info-value" id="info-username">@usendn2313</span>
+                            </li>
+                            <li class="info-row">
+                                <span class="info-label">Device</span>
+                                <span class="info-value">Android</span>
+                            </li>
+                            <li class="info-row">
+                                <span class="info-label">Platform</span>
+                                <span class="info-value">Telegram</span>
+                            </li>
+                            <li class="info-row">
+                                <span class="info-label">Last Activity</span>
+                                <span class="info-value">13 sec ago</span>
+                            </li>
+                            <li class="info-row">
+                                <span class="info-label">Status</span>
+                                <span class="info-value status-active"><span class="status-dot"></span>Active</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-danger btn-terminate" id="terminate-btn" type="button">
+                            <span class="btn-text">TERMINATE SESSION</span>
+                        </button>
+                    </div>
+
+                    <div class="termination-process hidden" id="termination-process">
+                        <div class="process-console">
+                            <div class="console-line" data-step="1">
+                                <span class="console-prefix">&gt;</span>
+                                <span class="console-text">Scanning...</span>
+                                <span class="console-status"></span>
+                            </div>
+                            <div class="console-line" data-step="2">
+                                <span class="console-prefix">&gt;</span>
+                                <span class="console-text">Verifying session...</span>
+                                <span class="console-status"></span>
+                            </div>
+                            <div class="console-line" data-step="3">
+                                <span class="console-prefix">&gt;</span>
+                                <span class="console-text">Terminating...</span>
+                                <span class="console-status"></span>
+                            </div>
+                        </div>
+                        <div class="progress-bar"><span class="progress-fill" id="progress-fill"></span></div>
+                    </div>
+
+                    <div class="termination-complete hidden" id="termination-complete">
+                        <div class="complete-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="complete-text">SESSION TERMINATED</div>
+                        <p class="complete-sub">Ссессия деактивирована</p>
+                        <button class="btn btn-secondary btn-reset" id="reset-btn" type="button">
+                            <span class="btn-text">Новая проверка</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-notice">
+                    <span class="notice-icon">⚠</span>
+                    <p class="notice-text">Все данные и действия — реальное подключение к Telegram и удаление сессий выполняются.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-number">02.</span>
+                    <span>О проекте</span>
+                </h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Скорость</h3>
+                        <p>Мгновенный отклик и плавная работа сервиса.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">🔒</div>
+                        <h3>Безопасность</h3>
+                        <p>Многоуровневая защита данных и приватность по умолчанию.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">🌐</div>
+                        <h3>Масштаб</h3>
+                        <p>Распределённая инфраструктура более 50.000 ботов доступностью 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2026 PROJECT TYPHOON — interface. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
